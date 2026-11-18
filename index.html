@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>HR Learning Platform</title>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body>
+<div class="login" id="login">
+  <div class="lcard">
+    <div class="lhero">
+      <div class="blob b1"></div>
+      <div class="blob b2"></div>
+      <div class="blob b3"></div>
+      <div class="blob b4"></div>
+      <div class="blob b5"></div>
+      <div class="ltext">
+        <small>With the platform you can</small>
+        <h2>Map every course, record and assessment to competencies in one place</h2>
+      </div>
+    </div>
+    <div class="lform">
+      <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+        stroke-linejoin="round" aria-hidden="true">
+        <path d="M3 9l9-4 9 4-9 4-9-4z" />
+        <path d="M7 11v4c0 1.5 2.5 3 5 3s5-1.5 5-3v-4" />
+        <path d="M21 9v5" />
+      </svg>
+      <h1>HR Learning Platform</h1>
+      <p>Competency mapping and skill-gap insights for HR.</p>
+      <button class="lbtn" id="loginBtn" onclick="doLogin()"><span class="spin"></span><span>Login with LTA
+          AD</span></button>
+    </div>
+  </div>
+</div>
+
+<div class="app">
+  <aside class="side">
+    <div class="brand">
+      <svg class="logo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+        stroke-linejoin="round" aria-hidden="true">
+        <path d="M3 9l9-4 9 4-9 4-9-4z" />
+        <path d="M7 11v4c0 1.5 2.5 3 5 3s5-1.5 5-3v-4" />
+        <path d="M21 9v5" />
+      </svg>
+      <b class="lbl">HR Learning Platform</b>
+      <button class="tog" id="tog" onclick="toggleSide()" title="Collapse sidebar" aria-label="Collapse sidebar"><svg
+          viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+          stroke-linejoin="round" aria-hidden="true">
+          <path d="M15 6l-6 6 6 6" />
+        </svg></button>
+    </div>
+    <button class="nav on" data-p="dash" title="Dashboard"><svg class="ni" viewBox="0 0 24 24" fill="none"
+        stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <rect x="3" y="3" width="7" height="7" rx="1.5" />
+        <rect x="14" y="3" width="7" height="7" rx="1.5" />
+        <rect x="3" y="14" width="7" height="7" rx="1.5" />
+        <rect x="14" y="14" width="7" height="7" rx="1.5" />
+      </svg><span class="lbl">Dashboard</span></button>
+    <button class="nav" data-p="fwcards" title="Browse"><svg class="ni" viewBox="0 0 24 24" fill="none"
+        stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <rect x="3" y="4" width="18" height="7" rx="2" />
+        <rect x="3" y="14" width="18" height="6" rx="2" />
+      </svg><span class="lbl">Browse</span></button>
+    <button class="navgroup" type="button" id="dataGroup" hidden aria-expanded="false" onclick="toggleNavGroup('data')"><span>Data</span><svg class="ng-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></button>
+    <div class="navgroup-items" id="nav-grp-data" hidden>
+    <button class="nav" data-p="fw" title="Frameworks"><svg class="ni" viewBox="0 0 24 24" fill="none"
+        stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M12 3l9 5-9 5-9-5 9-5z" />
+        <path d="M3 13l9 5 9-5" />
+        <path d="M3 17l9 5 9-5" />
+      </svg><span class="lbl">Frameworks</span></button>
+    <button class="nav" data-p="catalog" title="Catalog"><svg class="ni" viewBox="0 0 24 24" fill="none"
+        stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M4 4h11a3 3 0 0 1 3 3v13H7a3 3 0 0 0-3 3V4z" />
+        <path d="M4 17a3 3 0 0 1 3-3h11" />
+      </svg><span class="lbl">Catalog</span></button>
+    <button class="nav" data-p="records" title="Records"><svg class="ni" viewBox="0 0 24 24" fill="none"
+        stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9l-6-6z" />
+        <path d="M14 3v6h6" />
+        <path d="M8 13h8M8 17h8" />
+      </svg><span class="lbl">Records</span></button>
+    <button class="nav" data-p="assess" title="Assessments"><svg class="ni" viewBox="0 0 24 24" fill="none"
+        stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M4 20V10" />
+        <path d="M10 20V4" />
+        <path d="M16 20v-7" />
+        <path d="M22 20H2" />
+      </svg><span class="lbl">Assessments</span></button>
+    </div>
+    <button class="navgroup" type="button" id="actionGroup" aria-expanded="true" onclick="toggleNavGroup('action')"><span>Action</span><svg class="ng-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></button>
+    <div class="navgroup-items" id="nav-grp-action">
+      <button class="nav" data-p="upload" title="Upload"><svg class="ni" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 16V4"/><path d="M6 10l6-6 6 6"/><path d="M4 20h16"/></svg><span class="lbl">Upload</span></button>
+    </div>
+    <button class="navgroup" type="button" id="adminGroup" aria-expanded="true" onclick="toggleNavGroup('admin')"><span>Admin</span><svg class="ng-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></button>
+    <div class="navgroup-items" id="nav-grp-admin">
+    <button class="nav" data-p="users" title="Users"><svg class="ni" viewBox="0 0 24 24" fill="none"
+        stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="9" cy="8" r="3.5" />
+        <path d="M2.5 20a6.5 6.5 0 0 1 13 0" />
+        <circle cx="17" cy="9" r="2.5" />
+        <path d="M15.5 14.5a5 5 0 0 1 6 5" />
+      </svg><span class="lbl">Users</span></button>
+    <button class="nav" data-p="audit" title="Audit log"><svg class="ni" viewBox="0 0 24 24" fill="none"
+        stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="12" cy="12" r="9" />
+        <path d="M12 7v5l3 2" />
+      </svg><span class="lbl">Audit log</span></button>
+    <button class="nav" data-p="settings" title="Settings"><svg class="ni" viewBox="0 0 24 24" fill="none"
+        stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="12" cy="12" r="3" />
+        <path
+          d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z" />
+      </svg><span class="lbl">Settings</span></button>
+    </div>
+    <div class="me" id="me" onclick="openMe(event)" title="Account">
+      <span class="av a1">NH</span>
+      <div class="lbl mtxt"><b>Nurul Hassan</b><small id="meRole">HR Administrator</small></div>
+      <svg class="lbl mchev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M6 9l6 6 6-6" />
+      </svg>
+      <select id="role" hidden></select>
+    </div>
+  </aside>
+
+  <div class="main">
+    <div class="top">
+      <h1 id="title">Dashboard</h1>
+      <div id="topActions" class="tacts"></div>
+    </div>
+
+    <!-- DASHBOARD -->
+    <section class="page on" id="p-dash">
+      <div class="stack" style="gap:16px" id="dashRoot"></div>
+    </section>
+
+    <!-- FRAMEWORKS (TABLE) -->
+    <section class="page" id="p-fw">
+      <div class="stack">
+        <div id="fwFlow"></div>
+        <div id="fwCrumb"></div>
+        <div class="card lib">
+          <div class="tw">
+            <table id="tFw"></table>
+          </div>
+        </div>
+        <div class="pager" id="pg-fw"></div>
+      </div>
+      <div class="modal" id="m-fw" hidden onclick="if(event.target===this)closeUp('fw')">
+        <div class="mbox">
+          <div class="mhead"><span>Upload framework</span><button class="x" onclick="closeUp('fw')"
+              aria-label="Close">×</button></div>
+          <div id="up-fw"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- COMPETENCY CARDS -->
+    <section class="page" id="p-fwcards">
+      <div class="stack">
+        <div id="fwCardsFlow"></div>
+        <div class="bar" id="fwCardsBar" style="margin-bottom:2px"></div>
+        <div class="fw-cards" id="fwCards"></div>
+        <div class="pager" id="pg-fwcards"></div>
+      </div>
+    </section>
+
+    <!-- ASSESSMENTS -->
+    <section class="page" id="p-assess">
+      <div class="stack">
+        <div id="assessFlow"></div>
+        <div id="assessCrumb"></div>
+        <div id="assessBar"></div>
+        <div class="card lib">
+          <div class="tw">
+            <table id="tAssess"></table>
+          </div>
+        </div>
+        <div class="pager" id="pg-assess"></div>
+      </div>
+      <div class="modal" id="m-assess" hidden onclick="if(event.target===this)closeUp('assess')">
+        <div class="mbox">
+          <div class="mhead"><span>Upload assessment</span><button class="x" onclick="closeUp('assess')"
+              aria-label="Close">×</button></div>
+          <div id="up-assess"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CATALOG -->
+    <section class="page" id="p-catalog">
+      <div class="stack">
+        <div id="catalogFlow"></div>
+        <div id="catalogCrumb"></div>
+        <div id="catBar"></div>
+        <div id="catCards"></div>
+        <div class="card lib" id="catTableWrap">
+          <div class="tw">
+            <table id="tCat"></table>
+          </div>
+        </div>
+        <div class="pager" id="pg-catalog"></div>
+      </div>
+      <div class="modal" id="m-catalog" hidden onclick="if(event.target===this)closeUp('catalog')">
+        <div class="mbox">
+          <div class="mhead"><span>Upload catalog</span><button class="x" onclick="closeUp('catalog')"
+              aria-label="Close">×</button></div>
+          <div id="up-catalog"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RECORDS -->
+    <section class="page" id="p-records">
+      <div class="stack">
+        <div id="recordsFlow"></div>
+        <div id="recordsCrumb"></div>
+        <div id="recordsBar"></div>
+        <div class="card lib">
+          <div class="tw">
+            <table id="tRec"></table>
+          </div>
+        </div>
+        <div class="pager" id="pg-records"></div>
+      </div>
+      <div class="modal" id="m-records" hidden onclick="if(event.target===this)closeUp('records')">
+        <div class="mbox">
+          <div class="mhead"><span>Upload records</span><button class="x" onclick="closeUp('records')"
+              aria-label="Close">×</button></div>
+          <div id="up-records"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- UPLOAD -->
+    <section class="page" id="p-upload">
+      <div class="stack" id="upAllBody"></div>
+      <div style="display:flex;justify-content:flex-end;margin-top:14px">
+        <button class="btn lg pri" id="upAllBtn" type="button" onclick="uploadAllPicked()">Upload</button>
+      </div>
+    </section>
+
+    <!-- RECENT UPLOADS -->
+    <section class="page" id="p-jobs">
+      <div class="stack">
+        <div id="jobsCrumb"></div>
+        <div class="card lib">
+          <div style="padding:14px 16px;border-bottom:1px solid var(--line2);display:flex;align-items:center;gap:12px;flex-wrap:wrap">
+            <div id="jobsAllTabs" style="display:flex;gap:6px;flex-wrap:wrap"></div>
+          </div>
+          <div class="tw"><table id="jobs-all-tbl"></table></div>
+        </div>
+        <div class="pager" id="pg-jobs"></div>
+      </div>
+    </section>
+
+    <!-- USERS -->
+    <section class="page" id="p-users">
+      <div id="usersLocked" class="lockpage" hidden>HR Administrator only.</div>
+      <div id="usersBody">
+        <div class="phead">
+          <span class="sp"></span>
+          <button class="btn lg" onclick="openRoles()"><svg viewBox="0 0 24 24" width="15" height="15" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="3" />
+              <path
+                d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z" />
+            </svg> Role settings</button>
+          <button class="btn pri lg" onclick="openInvite()">+ Add user</button>
+        </div>
+        <div class="card lib">
+          <div class="tw">
+            <table id="tUsers"></table>
+          </div>
+        </div>
+        <div class="pager" id="pg-users"></div>
+      </div>
+
+      <div class="modal" id="m-invite" hidden onclick="if(event.target===this)this.hidden=true">
+        <div class="mbox">
+          <div class="mhead"><span>Add user</span><button class="x" onclick="$('#m-invite').hidden=true"
+              aria-label="Close">×</button></div>
+          <div class="mbody"><label class="fld">Email<input type="email"
+                id="invEmail" placeholder="name@lta.gov.sg"></label><label class="fld">Role<select
+                id="invRole"></select></label>
+            <div class="mfoot"><button class="btn lg" onclick="$('#m-invite').hidden=true">Cancel</button><button
+                class="btn pri lg" onclick="sendInvite()">Add user</button></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal" id="m-roles" hidden onclick="if(event.target===this)this.hidden=true">
+        <div class="mbox wide">
+          <div class="mhead dark"><span>Role settings</span><button class="x" onclick="$('#m-roles').hidden=true"
+              aria-label="Close">×</button></div>
+          <div class="mbody">
+            <div class="phead">
+              <div class="search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" aria-hidden="true">
+                  <circle cx="11" cy="11" r="7" />
+                  <path d="M20 20l-4-4" />
+                </svg><input type="text" id="rQ" placeholder="Search roles" oninput="rRoles()"></div><button
+                class="btn pri lg" onclick="openRoleForm()">+ Create role</button>
+            </div>
+            <div class="card lib">
+              <div class="tw">
+                <table id="tRoles"></table>
+              </div>
+              <div class="pfoot"><span class="dim" id="rRange"></span>
+                <div class="pager"><button disabled>‹</button><button class="on">1</button><button disabled>›</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal" id="m-role" hidden onclick="if(event.target===this)this.hidden=true">
+        <div class="mbox">
+          <div class="mhead"><span id="roleFormTitle">Create role</span><button class="x"
+              onclick="$('#m-role').hidden=true" aria-label="Close">×</button></div>
+          <div class="mbody"><label class="fld">Role name<input type="text" id="roleName"
+                placeholder="e.g. L&amp;D Partner"></label>
+            <div class="flbl">Journey permissions</div>
+            <div class="perms" id="permList"></div>
+            <div class="mfoot"><button class="btn lg" onclick="$('#m-role').hidden=true">Cancel</button><button
+                class="btn pri lg" id="roleSave" onclick="saveRole()">Save role</button></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- SETTINGS -->
+    <section class="page" id="p-settings">
+      <div id="setLocked" class="lockpage" hidden>HR Administrator only.</div>
+      <div id="setBody" class="stack">
+        <div class="card">
+          <h2>Mapping confidence threshold</h2>
+          <div class="setrow">
+            <div class="setl">
+              <div class="thrctl"><input type="range" id="thrRange" min="50" max="99" step="1"
+                  oninput="thrPreview(this.value)"><input type="number" id="thrNum" min="50" max="99"
+                  oninput="thrPreview(this.value)"><span>%</span></div>
+            </div>
+            <div class="setr"><button class="btn pri" onclick="saveThr()">Save threshold</button></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- AUDIT -->
+    <section class="page" id="p-audit">
+      <div id="auditLocked" class="lockpage" hidden>HR Administrator only.</div>
+      <div id="auditBody">
+        <div class="card lib">
+          <div class="tw">
+            <table id="tAudit"></table>
+          </div>
+        </div>
+        <div class="pager" id="pg-audit"></div>
+      </div>
+    </section>
+
+  </div>
+</div>
+<div class="modal" id="m-confirm" hidden onclick="if(event.target===this)this.hidden=true">
+  <div class="mbox" style="width:min(400px,100%)">
+    <div class="mhead"><span id="cfTitle">Delete?</span><button class="x" onclick="$('#m-confirm').hidden=true"
+        aria-label="Close">×</button></div>
+    <div class="mbody">
+      <p style="margin:0" id="cfText"></p>
+      <div class="mfoot"><button class="btn lg" onclick="$('#m-confirm').hidden=true">Cancel</button><button
+          class="btn lg pri" id="cfOk" style="background:var(--bad);border-color:var(--bad)">Delete</button></div>
+    </div>
+  </div>
+</div>
+<div class="modal" id="m-hist" hidden onclick="if(event.target===this)this.hidden=true">
+  <div class="mbox wide">
+    <div class="mhead">
+      <div><span id="histTitle">Version history</span><small class="dim" id="histSub"
+          style="display:block;font-weight:400"></small></div><button class="x" onclick="$('#m-hist').hidden=true"
+        aria-label="Close">×</button>
+    </div>
+    <div class="mbody" id="histBody"></div>
+  </div>
+</div>
+<div class="modal" id="m-course" hidden onclick="if(event.target===this)this.hidden=true">
+  <div class="mbox" style="width:min(600px,100%)">
+    <div class="mhead">
+      <div><span id="ecModalTitle">Edit course</span><small class="dim" id="ecModalSub"
+          style="display:block;font-weight:400"></small></div><button class="x" onclick="$('#m-course').hidden=true"
+        aria-label="Close">×</button>
+    </div>
+    <div class="mbody" id="ecModalBody"></div>
+  </div>
+</div>
+<div class="modal" id="m-chg" hidden onclick="if(event.target===this)this.hidden=true">
+  <div class="mbox wide">
+    <div class="mhead">
+      <div><span id="chgTitle">Changes</span><small class="dim" id="chgSub"
+          style="display:block;font-weight:400"></small></div><button class="x" onclick="$('#m-chg').hidden=true"
+        aria-label="Close">×</button>
+    </div>
+    <div class="mbody chg" id="chgBody"></div>
+    <div class="mfoot" style="padding:0 16px 16px"><button class="btn"
+        onclick="toast('Change summary exported (demo)')">Export summary</button><button class="btn pri"
+        onclick="$('#m-chg').hidden=true">Close</button></div>
+  </div>
+</div>
+<div class="toast" id="toast"></div>
+  <script defer src="js/data.js"></script>
+  <script defer src="js/core.js"></script>
+  <script defer src="js/dashboard.js"></script>
+  <script defer src="js/frameworks.js"></script>
+  <script defer src="js/catalog.js"></script>
+  <script defer src="js/admin.js"></script>
+</body>
+</html>
